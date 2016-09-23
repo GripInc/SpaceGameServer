@@ -73,7 +73,7 @@ protected:
 
 	//DEBUG
 	float mDebugPanelLastRefresh;
-	static const float mDebugPanelRefreshRate;
+	static const float sDebugPanelRefreshRate;
 	
 	virtual bool keyPressed( const OIS::KeyEvent &arg );
     virtual bool keyReleased( const OIS::KeyEvent &arg );

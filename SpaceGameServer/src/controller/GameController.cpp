@@ -24,7 +24,7 @@ namespace
 	const std::string LOG_CLASS_TAG = "GameController";
 }
 
-const float GameController::mDebugPanelRefreshRate = 0.1f;
+const float GameController::sDebugPanelRefreshRate = 0.1f;
 const float GameController::GAME_UPDATE_RATE = 1.f / 30.f;
 
 /** Init */
@@ -58,7 +58,7 @@ void GameController::init(const std::string& _playerDataFilePath, const std::str
 
 	//DEBUG
 	mDebugPanelLastRefresh = 0.f;
-	mLaggyValue = 10000;
+	mLaggyValue = 0;
 }
 
 void GameController::addPlayer(const RakNet::RakNetGUID& _id, PlayerData* _playerData)
@@ -179,7 +179,7 @@ bool GameController::frameRenderingQueued(const Ogre::FrameEvent& evt)
 			mUIController->getDebugPanel()->setAllParamNames(paramNames);
 		}
 		mDebugPanelLastRefresh += evt.timeSinceLastFrame;
-		if(mDebugPanelLastRefresh > mDebugPanelRefreshRate)
+		if(mDebugPanelLastRefresh > sDebugPanelRefreshRate)
 		{
 			mUIController->getDebugPanel()->setParamValue(0, StringUtils::toStr(""));
 			mUIController->getDebugPanel()->setParamValue(1, StringUtils::toStr(""));

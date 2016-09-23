@@ -116,8 +116,7 @@ bool MyContactCallback(btManifoldPoint& cp, const btCollisionObjectWrapper* colO
 }
 
 Sector::Sector(Ogre::SceneManager* _sceneManager, float _sectorUpdateRate, unsigned int _maxSectorTickRewindAmount)
-	: mSectorTick(0),
-	mSceneManager(_sceneManager),
+	: mSceneManager(_sceneManager),
 	mSectorUpdateRate(_sectorUpdateRate),
 	mClientsInput(_maxSectorTickRewindAmount)
 {

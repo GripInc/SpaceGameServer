@@ -74,7 +74,7 @@ public:
 protected:
 	static UniqueId sUniqueId;
 
-	Ogre::SceneManager* mSceneManager;
+	Ogre::SceneManager* mSceneManager = nullptr;
 
 	//Sector objects
 	std::vector<StaticObject*> mStaticObjects;
@@ -88,12 +88,12 @@ protected:
 	std::set<RakNet::RakNetGUID> mUsersIds;
 
 	//The physic world
-	btDiscreteDynamicsWorld* mDynamicWorld;
+	btDiscreteDynamicsWorld* mDynamicWorld = nullptr;
 	//Physic simulation related
-	btDbvtBroadphase* mBroadphase;
-    btDefaultCollisionConfiguration* mCollisionConfiguration;
-    btCollisionDispatcher* mDispatcher;
-	btSequentialImpulseConstraintSolver* mConstraintSolver;
+	btDbvtBroadphase* mBroadphase = nullptr;
+    btDefaultCollisionConfiguration* mCollisionConfiguration = nullptr;
+    btCollisionDispatcher* mDispatcher = nullptr;
+	btSequentialImpulseConstraintSolver* mConstraintSolver = nullptr;
 
 	//Update ships systems
 	void updateShipsSystems(float _deltaTime, const ClientsInputMap& _clientsInputMap);
@@ -102,10 +102,10 @@ protected:
 	bool simulateWorldForClientsHistory();
 
 	//Game tick
-	SectorTick mSectorTick;
+	SectorTick mSectorTick = 0;
 
 	//Update rate
-	float mSectorUpdateRate;
+	float mSectorUpdateRate = 0.f;
 
 	//Clients input history of the sector
 	InputHistoryManager mClientsInput;
@@ -116,9 +116,9 @@ protected:
 	void saveSectorState();
 
 	//Debug view utils
-	BulletDebugDraw* mBulletDebugDraw;
-	bool mDisplayDebug;
-	bool mDoDisplayWorld;
+	BulletDebugDraw* mBulletDebugDraw = nullptr;
+	bool mDisplayDebug = false;
+	bool mDoDisplayWorld = true;
 };
 
 #endif //_SECTOR_H_
